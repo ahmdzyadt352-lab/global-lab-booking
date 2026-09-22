@@ -140,6 +140,8 @@ function GlobalLabPage() {
   const device = devices[deviceSlider.current];
   const branch = branches[branchSlider.current];
 
+  if (!device || !branch) return null;
+
   return (
     <main dir="rtl" className="min-h-screen overflow-hidden bg-background text-foreground">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-xl">
@@ -172,7 +174,12 @@ function GlobalLabPage() {
         {menuOpen && (
           <nav className="animate-menu-in border-t border-border bg-background px-4 py-4 lg:hidden" aria-label="قائمة الموبايل">
             <div className="mx-auto grid max-w-7xl gap-2">
-              {[["founder", "عن المعمل"], ["devices", "أجهزتنا"], ["branches", "فروعنا"], ["booking", "احجز تحليلك"]].map(([id, label]) => (
+              {[
+                { id: "founder", label: "عن المعمل" },
+                { id: "devices", label: "أجهزتنا" },
+                { id: "branches", label: "فروعنا" },
+                { id: "booking", label: "احجز تحليلك" },
+              ].map(({ id, label }) => (
                 <Button key={id} variant="ghost" className="justify-start" onClick={() => scrollTo(id)}>{label}</Button>
               ))}
             </div>
@@ -229,13 +236,13 @@ function GlobalLabPage() {
       <section className="trust-strip" aria-label="مميزات المعمل">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 sm:grid-cols-3 sm:px-6 lg:px-8">
           {[
-            [Microscope, "أجهزة عالمية", "تقنيات حديثة لنتائج أكثر دقة"],
-            [ShieldCheck, "جودة موثوقة", "معايير صارمة داخل جميع مراحل التحليل"],
-            [Clock3, "سرعة واستجابة", "حجز بسيط وتواصل سريع من المختص"],
-          ].map(([Icon, title, text]) => (
-            <div key={String(title)} className="flex items-center gap-4">
+            { Icon: Microscope, title: "أجهزة عالمية", text: "تقنيات حديثة لنتائج أكثر دقة" },
+            { Icon: ShieldCheck, title: "جودة موثوقة", text: "معايير صارمة داخل جميع مراحل التحليل" },
+            { Icon: Clock3, title: "سرعة واستجابة", text: "حجز بسيط وتواصل سريع من المختص" },
+          ].map(({ Icon, title, text }) => (
+            <div key={title} className="flex items-center gap-4">
               <div className="grid size-12 shrink-0 place-items-center rounded-md bg-background/10"><Icon className="size-6" /></div>
-              <div><h3 className="font-black">{String(title)}</h3><p className="mt-1 text-sm text-primary-foreground/75">{String(text)}</p></div>
+              <div><h3 className="font-black">{title}</h3><p className="mt-1 text-sm text-primary-foreground/75">{text}</p></div>
             </div>
           ))}
         </div>
