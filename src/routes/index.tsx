@@ -187,7 +187,7 @@ function GlobalLabPage() {
         )}
       </header>
 
-      <section id="top" className="hero-grid relative min-h-[760px] pt-32 lg:min-h-screen lg:pt-28">
+      <section id="top" className="hero-grid relative min-h-[760px] pt-32 lg:min-h-[850px] lg:pt-28">
         <div className="hero-orbit hero-orbit-one" aria-hidden="true" />
         <div className="hero-orbit hero-orbit-two" aria-hidden="true" />
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 pb-16 sm:px-6 lg:grid-cols-[1.05fr_.95fr] lg:px-8">
