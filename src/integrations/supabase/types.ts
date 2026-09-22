@@ -14,7 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      lab_bookings: {
+        Row: {
+          branch: string
+          created_at: string
+          id: string
+          patient_name: string
+          phone: string
+          status: string
+        }
+        Insert: {
+          branch: string
+          created_at?: string
+          id?: string
+          patient_name: string
+          phone: string
+          status?: string
+        }
+        Update: {
+          branch?: string
+          created_at?: string
+          id?: string
+          patient_name?: string
+          phone?: string
+          status?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
